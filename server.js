@@ -1,6 +1,12 @@
 const express = require('express');
 const app = express();
+const hostname = '127.0.0.1';
+const port = 3000;
 
-const server = app.listen(3000, () =>{
-    console.log('the server is running on port',server.address().port);
+app.get('/', function(req, res, next){
+    res.send('Hola Amegos!');
+});
+
+app.listen(port, hostname, () =>{
+    console.log(`the server is running on ${hostname}:${port}`);
 });
