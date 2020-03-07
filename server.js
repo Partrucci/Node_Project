@@ -30,7 +30,9 @@ io.on('connection', function(socket){
         console.log('a CHAD has gone... left only virgin!');
     });
 
-    socket.on('asdasdasd',function(msg){
+    socket.on('chatting',function(msg){
         console.log('a CHAD says :',msg);
+
+        io.emit('chatting',msg);
     });
 });
