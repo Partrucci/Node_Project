@@ -28,8 +28,7 @@ io.on('connection', function(socket){
     });
 
     socket.on('disconnect', function(username){
-        console.log('a CHAD has gone... left only virgin!');
-        io.emit('online,','<center><i>'+socket.username+'left the chat...</i></center>');
+        io.emit('online','<center><i>'+socket.username+' left the chat...</i></center>');
     });
 
     socket.on('chatting',function(msg){
