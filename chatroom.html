@@ -13,9 +13,11 @@
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
   </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Hello virgin!</h1>
+    <ul id="latestmessages"></ul>
     <ul id="messages"></ul>
     <form action="">
       <input id="m" autocomplete="off" placeholder="Type Here... " />
@@ -32,9 +34,10 @@
               $('#m').val('');
               return false;
           });
+
           socket.on('chatting', function(msg){
             $('#messages').append($('<li>').html(msg));
-          })
+          });
 
           socket.on('online', function(username){
             $('#messages').append($('<li>').html(username));
@@ -42,6 +45,15 @@
 
           var username = prompt('Insert your nickname : ');
           socket.emit('username', username);
+          $.get({url:`http://127.0.0.1:3000/chatstore`,cache:false}).then(function(res){
+                if(res==('undefined : undefined')){
+                  //$('#latestmessages').val('');
+                  return false;
+                }else{
+                  $('#latestmessages').append($('<li>').html('Latest message... '+res));
+                  console.log(res);
+                }
+            });
       });
     </script> 
 </body>
