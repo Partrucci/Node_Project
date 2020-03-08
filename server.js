@@ -21,7 +21,6 @@ app.get('/',function(req, res){
 });
 */
 app.get('/', function(req, res){
-    console.log('Enter the CHADroom');
     res.sendFile(__dirname + '/chatroom.html');
 });
 
@@ -30,7 +29,6 @@ app.get('/chatstore', function(req, res){
 });
 
 io.on('connection', function(socket){
-    console.log('a user connected');
     /*
     client.push({id : socket.client.id});
     console.log(client);
@@ -43,12 +41,12 @@ io.on('connection', function(socket){
     socket.on('username', function(username){
         socket.username = username;
         io.emit('online','<center><i>'+socket.username+' join the chat...</i></center>');
-        console.log(`User ${socket.username} connected`);
+        console.log(`User "${socket.username}" connected`);
     });
 
     socket.on('disconnect', function(username){
         io.emit('online','<center><i>'+socket.username+' left the chat...</i></center>');
-        console.log(`User ${socket.username} disconnected`);
+        console.log(`User "${socket.username}" disconnected`);
     });
 
     socket.on('chatting', function(msg){
@@ -57,6 +55,7 @@ io.on('connection', function(socket){
 //        history.push(socket.username+' : '+msg);
 //        console.log('latest chat session : ',history);
         io.emit('chatting',socket.username+' : '+msg);
+        console.log(socket.username+' : '+msg);
     });
 /*
     socket.on('chathistory',function(username){
@@ -67,6 +66,6 @@ io.on('connection', function(socket){
   */      
 });
 
-server.listen(port, () =>{
+server.listen(port, function() {
     console.log(`the server is running on ${hostname}:${port}`);
 });
