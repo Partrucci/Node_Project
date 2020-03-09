@@ -1,18 +1,27 @@
 {
-  "name": "node01",
+  "name": "amigo-chat.io",
   "version": "1.0.0",
   "description": "testing unit",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "",
+  "author": "Part Mainual aka Partrucci",
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^4.4.1",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "socket.io": "^2.3.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Partrucci/Node_Project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Partrucci/Node_Project/issues"
+  },
+  "homepage": "https://github.com/Partrucci/Node_Project#readme"
 }

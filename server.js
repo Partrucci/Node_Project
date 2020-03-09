@@ -4,8 +4,8 @@ const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const session = require('express-session');
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const hostname = 'https://amigochat-nodejs.herokuapp.com/';
+const port =  process.env.PORT || 3000;
 
 app.use(express.static('public'));
 app.use(session({
@@ -13,13 +13,7 @@ app.use(session({
     saveUninitialized: true,
     resave: true
 }));
-/*
-app.get('/',function(req, res){
-    console.log('VIRGIN DETECTED')
-    res.write('HELLO VIRGIN!');    
-    res.end();
-});
-*/
+
 app.get('/', function(req, res){
     res.sendFile(__dirname + '/chatroom.html');
 });
