@@ -12,16 +12,22 @@
         form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
         form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
         #messages { list-style-type: none; margin: 0; padding: 0; }
-        #messages li { padding: 5px 10px; }
+        #messages li { padding: 5px 10px; word-wrap: break-word; }
         #messages li:nth-child(odd) { background: #eee; }
     </style>
 </head>
 <body>
-        <h2 align="center">Hola   Amigo-chat.io!</h2>
+        <h2 align="center">Hola Amigo-chat.io!</h2>
         <ul id="latestmessages"></ul>
         <ul id="messages"></ul>
         <form action="">
-          <input id="m" autocomplete="off" placeholder="Type Here... " /><button>Send</button>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-5"></div><input id="m" autocomplete="off" placeholder="Type Here... " /><button type="submit" class="btn btn-success">Send</button>
+
+            </div>
+          </div>
+        </div>
         </form>
 
     <script src="/socket.io/socket.io.js"></script>
@@ -51,6 +57,8 @@
     socket.emit('username', username);
    
     $.get({url:`https://amigochat-nodejs.herokuapp.com/chatstore`,cache:false}).then(function(res){
+//      $.get({url:`127.0.0.1/chatstore`,cache:false}).then(function(res){
+//        $.get({url:`${process.env.domain}/chatstore`,cache:false}).then(function(res){
           if(res==('undefined : undefined')){
             //$('#latestmessages').val('');
             return false;

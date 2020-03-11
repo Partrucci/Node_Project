@@ -50,6 +50,7 @@ io.on('connection', function(socket){
 //        console.log('latest chat session : ',history);
         io.emit('chatting',socket.username+' : '+msg);
         console.log(socket.username+' : '+msg);
+        console.log(typeof(msg));
     });
 /*
     socket.on('chathistory',function(username){
