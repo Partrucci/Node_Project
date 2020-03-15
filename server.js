@@ -4,7 +4,7 @@ const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const session = require('express-session');
 
-const hostname = 'https://amigochat-nodejs.herokuapp.com/';
+const hostname = 'https://amigochat-nodejs.herokuapp.com/' ;
 const port =  process.env.PORT || 3000;
 
 app.use(express.static('public'));
@@ -33,7 +33,11 @@ io.on('connection', function(socket){
     }
 */
     socket.on('username', function(username){
-        socket.username = username;
+        if(username == null || " "){
+            socket.username = 'Anonymous';
+        }else {
+            socket.username = username;
+        };
         io.emit('online','<center><i>'+socket.username+' join the chat...</i></center>');
         console.log(`User "${socket.username}" connected`);
     });
